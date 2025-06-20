@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     public function index() {
-        $products = Product::with('category')->paginate(10);
+        $products = Product::with('category')->latest()->paginate(10);
 
         return view('pages.products.index', [
             "products" => $products,
@@ -34,11 +34,18 @@ class ProductController extends Controller
             "stock" => "required",
             "category_id" => "required",
             "sku" => "required",
+        ], [
+            "name.required" => "Product/item name must be filled in!",
+            "name.min" => "3 Character Minimum!",
+            "price.required" => "Price must be filled in!",
+            "stock.required" => "Stock must be filled in!",
+            "category_id.required" => "Category id must be filled in!",
+            "sku.required" => "Code must be filled in!",
         ]);
 
         Product::create($validated);
 
-        return redirect('/products');
+        return redirect('/products')->with('success', 'Product/Item added successfully.');
     }
 
     public function edit($id) {
@@ -59,17 +66,24 @@ class ProductController extends Controller
             "stock" => "required",
             "category_id" => "required",
             "sku" => "required",
+        ], [
+            "name.required" => "Product/item name must be filled in!",
+            "name.min" => "3 Character Minimum!",
+            "price.required" => "Price must be filled in!",
+            "stock.required" => "Stock must be filled in!",
+            "category_id.required" => "Category id must be filled in!",
+            "sku.required" => "Code must be filled in!",
         ]);
 
         Product::where('id', $id)->update($validated);
 
-        return redirect('/products');
+        return redirect('/products')->with('success', 'Product/Item changed successfully.');
     }
 
     public function delete($id) {
         $product = Product::where('id', $id);
         $product->delete();
 
-        return redirect('/products');
+        return redirect('/products')->with('success', 'Product/Item deleted successfully.');
     }
 }

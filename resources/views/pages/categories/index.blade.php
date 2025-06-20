@@ -7,7 +7,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
               <li class="breadcrumb-item active">Category</li>
             </ol>
           </div>
@@ -15,6 +15,15 @@
 @endsection
 
 @section('content')
+    @if (session('success'))
+    <script>
+        Swal.fire({
+          title: "Success!",
+          text: "{{ session('success') }}",
+          icon: "success"
+        });
+    </script>
+    @endif
     <div class="row">
       <div class="col">
         <div class="card">
@@ -44,16 +53,20 @@
                         <a href="/categories/edit/{{ $category->id }}" class="btn btn-sm btn-warning mr-2">
                         Edit
                       </a>
-                      <form action="/categories/{{ $category->id }}" method="POST">
+                      {{-- <form action="/categories/{{ $category->id }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger">
                           Delete
                         </button>
-                      </form>
+                      </form> --}}
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete-{{ $category->id }}">
+                            Delete
+                        </button>
                       </div>
                     </td>
                   </tr>
+                  @include('pages.categories.delete-confirmation')
                 @endforeach
               </tbody>
             </table>
