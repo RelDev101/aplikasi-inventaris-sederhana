@@ -3,12 +3,12 @@
 @section('header')
     <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Products</h1>
+            <h1>Products/Items</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Products</li>
+              <li class="breadcrumb-item active">Products/Items</li>
             </ol>
           </div>
         </div>
@@ -28,7 +28,7 @@
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Product</th>
+                  <th>Product/Item</th>
                   <th>Description</th>
                   <th>Code</th>
                   <th>Price</th>

@@ -11,7 +11,7 @@
       "icon" => "fas fa-th",
     ],
     (object)[
-      "title" => "Products",
+      "title" => "Products/Items",
       "path" => "products",
       "icon" => "fas fa-th",
     ],

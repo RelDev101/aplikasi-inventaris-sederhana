@@ -28,7 +28,7 @@
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama</th>
+                  <th>Name</th>
                   <th>Slug</th>
                   <th>#</th>
                 </tr>
